@@ -1,7 +1,15 @@
 
 ## How to run project
-Make git clone
-`git clone https://github.com/rubem007/nestjs-docker.git`
+1 - Make git clone `git clone https://github.com/rubem007/microservice-nestjs-rabbitmq.git`
+
+2 - Inside the project directory, open cmd and run the command `docker-compose up -d`
+
+### Test Endpoint
+#### App A
+curl -X POST http://localhost:3000 -H "Content-Type: application/json" -d '{"message": "hello from app A"}'
+
+#### App B
+curl -X POST http://localhost:3001 -H "Content-Type: application/json" -d '{"message": "hello from app B"}'
 
 ## Start Commands for docker-compose file
 Builds, (re)creates, starts, and attaches to containers for a service.
