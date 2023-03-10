@@ -11,10 +11,6 @@ curl -X POST http://localhost:3000 -H "Content-Type: application/json" -d '{"mes
 #### App B
 curl -X POST http://localhost:3001 -H "Content-Type: application/json" -d '{"message": "hello from app B"}'
 
-## Start Commands for docker-compose file
-Builds, (re)creates, starts, and attaches to containers for a service.
-`docker-compose up -d`
-
 ## Docker-compose
 Basic docker-compose commands:
  - `docker-compose up`: Starts the services defined in the docker-compose.yml
