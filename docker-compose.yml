@@ -28,16 +28,16 @@ services:
     volumes:
       - ./app-a:/usr/src/app 
 
-  # app-b:
-  #   container_name: app-b
-  #   build:
-  #     context: "./app-b"
-  #     dockerfile: Dockerfile
-  #   command: npm run start:dev
-  #   depends_on:
-  #     - rabbitmq
-  #   ports:
-  #     - 3001:3001
-  #   volumes:
-  #     - ./app-b:/usr/src/app 
+  app-b:
+    container_name: app-b
+    build:
+      context: "./app-b"
+      dockerfile: Dockerfile
+    command: npm run start:dev
+    depends_on:
+      - rabbitmq
+    ports:
+      - 3001:3001
+    volumes:
+      - ./app-b:/usr/src/app 
 
