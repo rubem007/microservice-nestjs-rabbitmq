@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { RabbitmqService } from './rabbitmq/rabbitmq.service';
+import { MessageDto } from './models/dto/message.dto';
 
 @Injectable()
 export class AppService {
@@ -7,10 +8,11 @@ export class AppService {
 
   /**
    * Objective: post message on exchange
-   * @param {string} message - string
+   * @param {MessageDto} messageDto - MessageDto
    * @author RDN
    */
-  public publishMessage(message: string): void {
+  public publishMessage(messageDto: MessageDto): void {
+    const { message } = messageDto;
     this.rabbitMq.publish('app_b', {
       message,
     });
