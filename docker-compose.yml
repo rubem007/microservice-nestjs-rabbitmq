@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.10-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+    volumes:
+      - ./.docker/rabbitmq/.rabbitmq_data:/var/lib/rabbitmq/mnesia
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+
+  app-a:
+    container_name: app-a
+    build:
+      context: "./app-a"
+      dockerfile: Dockerfile
+    command: npm run start:dev
+    depends_on:
+      - rabbitmq
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app-a:/usr/src/app 
+
+  # app-b:
+  #   container_name: app-b
+  #   build:
+  #     context: "./app-b"
+  #     dockerfile: Dockerfile
+  #   command: npm run start:dev
+  #   depends_on:
+  #     - rabbitmq
+  #   ports:
+  #     - 3001:3001
+  #   volumes:
+  #     - ./app-b:/usr/src/app 
+
