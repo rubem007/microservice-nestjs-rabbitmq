@@ -23,5 +23,5 @@ Basic docker-compose commands:
  - `docker-compose exec`: Runs a command inside a running container. Use this command to execute commands such as shell, bash, and python inside the container.
 
 ## Documentation
-https://www.rabbitmq.com/getstarted.html
+ https://www.rabbitmq.com/getstarted.html <br>
 https://www.npmjs.com/package/@golevelup/nestjs-rabbitmq
