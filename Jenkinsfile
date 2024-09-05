@@ -1,14 +1,14 @@
 pipeline {
     agent any
 
-    stage('Checkout') {
-        steps {
+    stages {
+        stage('Checkout') {
+            steps {
                 // Checkout code from the repository
                 checkout scm
+            }
         }
-    }
 
-    stages {
         stage ('Build Docker Image') {
             steps {
                 script {
