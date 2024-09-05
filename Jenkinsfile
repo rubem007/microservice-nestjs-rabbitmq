@@ -16,5 +16,17 @@ pipeline {
                 }
             }
         }
+
+        stage ('Push Image') {
+            steps {
+                script {
+                    // Push the image to the Docker registry (e.g., Docker Hub)
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials-id') {
+                        dockerapp.push('latest')
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
     }
 }
