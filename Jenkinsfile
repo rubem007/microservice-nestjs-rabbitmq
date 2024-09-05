@@ -1,10 +1,19 @@
 pipeline {
     agent any
 
+    stage('Checkout') {
+        steps {
+                // Checkout code from the repository
+                checkout scm
+        }
+    }
+
     stages {
-        stage ('Inicial') {
+        stage ('Build Docker Image') {
             steps {
-                echo 'Iniciando a pipeline'
+                script {
+                    dockerapp = docker.build("rubemnascimento81/app-a:${env.BUILD_ID}", "-f ./app-a/Dockerfile ./app-a")
+                }
             }
         }
     }
